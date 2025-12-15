@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nano Banner Creator - Tạo Banner Quảng Cáo</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎨 Nano Banana - AI Image Generator</h1>
+            <p class="subtitle">Sinh ảnh trực tiếp với Gemini 2.5 Flash Image</p>
+        </header>
+
+        <!-- AI Image Generation Section -->
+        <div class="ai-section">
+            <h2>🤖 NanoBanana - Tạo ảnh bằng AI (Gemini)</h2>
+            <div class="ai-controls">
+             
+                
+                <div class="form-group">
+                    <label for="imagePrompt">Mô tả ảnh bạn muốn tạo:</label>
+                    <textarea id="imagePrompt" rows="3" placeholder="Ví dụ: Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"></textarea>
+                </div>
+                
+                <div class="button-group" style="flex-direction: column; gap: 10px;">
+                    <button class="btn btn-primary" onclick="generateImageWithGemini()" id="generateBtn">
+                        🎨 Tạo ảnh với AI (Gemini Image)
+                    </button>
+                    <button class="btn btn-success" onclick="generateVideoWithGemini()">
+                        🎬 Tạo video với AI (Veo 3.1)
+                    </button>
+                </div>
+                
+                <div id="loadingIndicator" style="display: none; text-align: center; margin-top: 20px;">
+                    <div class="spinner"></div>
+                    <p>Đang tạo ảnh...</p>
+                </div>
+                
+                <div id="imageResult" style="display: none; margin-top: 20px;">
+                    <h3>Ảnh đã tạo:</h3>
+                    <div class="generated-image-container">
+                        <img id="generatedImage" alt="Generated image" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                    </div>
+                    <button class="btn btn-success" onclick="downloadGeneratedImage()" style="margin-top: 15px;">
+                        💾 Tải ảnh xuống
+                    </button>
+                </div>
+
+                <div id="videoResult" style="display: none; margin-top: 20px; padding: 15px; background: #f3f7ff; border-radius: 10px; border: 1px solid #d8e4ff;">
+                    <h3>Video đã tạo:</h3>
+                    <div id="videoSpinner" class="spinner" style="display: none; margin: 10px auto;"></div>
+                    <p id="videoStatus" style="margin: 5px 0; color: #2c3e50;">Đang xử lý...</p>
+                    <video id="generatedVideo" style="display: none; width: 100%; max-height: 420px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" controls></video>
+                    <a id="videoDownload" class="btn btn-primary" href="#" target="_blank" style="display: inline-block; margin-top: 10px;">
+                        🔗 Mở/Tải video
+                    </a>
+                </div>
+                
+                <div id="errorMessage" style="display: none; margin-top: 20px; padding: 15px; background: #fee; border-radius: 10px; color: #c33;">
+                    <strong>Lỗi:</strong> <span id="errorText"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Templates -->
+        <div class="templates-section">
+            <h2>📋 Mẫu có sẵn</h2>
+            <div class="templates-grid">
+                <div class="template-card" onclick="applyTemplate('sale')">
+                    <div class="template-preview" style="background: linear-gradient(135deg, #FF6B6B, #FF8E8E);">
+                        <span style="color: white; font-weight: bold;">SALE 50%</span>
+                    </div>
+                    <p>Sale Off</p>
+                </div>
+                <div class="template-card" onclick="applyTemplate('new')">
+                    <div class="template-preview" style="background: linear-gradient(135deg, #4ECDC4, #44A08D);">
+                        <span style="color: white; font-weight: bold;">NEW</span>
+                    </div>
+                    <p>New Product</p>
+                </div>
+                <div class="template-card" onclick="applyTemplate('hot')">
+                    <div class="template-preview" style="background: linear-gradient(135deg, #F093FB, #F5576C);">
+                        <span style="color: white; font-weight: bold;">HOT</span>
+                    </div>
+                    <p>Hot Deal</p>
+                </div>
+                <div class="template-card" onclick="applyTemplate('free')">
+                    <div class="template-preview" style="background: linear-gradient(135deg, #4FACFE, #00F2FE);">
+                        <span style="color: white; font-weight: bold;">FREE</span>
+                    </div>
+                    <p>Free Shipping</p>
+                </div>
+                <div class="template-card" onclick="applyTemplate('limited')">
+                    <div class="template-preview" style="background: linear-gradient(135deg, #FA709A, #FEE140);">
+                        <span style="color: white; font-weight: bold;">LIMITED</span>
+                    </div>
+                    <p>Limited Time</p>
+                </div>
+                <div class="template-card" onclick="applyTemplate('premium')">
+                    <div class="template-preview" style="background: linear-gradient(135deg, #30CFD0, #330867);">
+                        <span style="color: white; font-weight: bold;">PREMIUM</span>
+                    </div>
+                    <p>Premium</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Entry Point - Vite will bundle all modules -->
+    <script type="module" src="/js/app.js"></script>
+</body>
+</html>
+
